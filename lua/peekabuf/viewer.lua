@@ -32,7 +32,7 @@ function peekabuf.open_buffer(bufnr)
     set_scrollbind(current_win, new_win)
 end
 
-function peekabuf.viewer(bufnr)
+function peekabuf.peekabuf(bufnr)
     if not is_markdown(bufnr) then
         vim.notify("peekabuf: not a markdown file", vim.log.levels.WARN)
         return
