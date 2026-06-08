@@ -11,7 +11,7 @@ function M.setup(opts)
         vim.keymap.set(
             "n",
             "<leader>md",
-            ":lua require('peekabuf.viewer').peekabuf()<CR>",
+            ":lua require('peekabuf.viewer').peekabuf(vim.api.nvim_get_current_buf())<CR>",
             { noremap = true, silent = true, desc = "Open Markdown Viewer" }
         )
     end

@@ -25,7 +25,6 @@ function peekabuf.open_buffer(bufnr)
     else
         vim.cmd("split")
     end
-    vim.api.nvim_win_set_buf(0, bufnr)
     local new_win = vim.api.nvim_get_current_win()
 
     vim.api.nvim_win_set_buf(new_win, bufnr)
