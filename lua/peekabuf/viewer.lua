@@ -1,5 +1,7 @@
 local Config = require("peekabuf.config")
-local peekabuf = {}
+local peekabuf = {
+    buffer = {},
+}
 
 local function is_markdown(buf)
     local filepath = vim.api.nvim_buf_get_name(buf)
@@ -29,6 +31,7 @@ function peekabuf.open_buffer(bufnr)
 
     vim.api.nvim_win_set_buf(new_win, bufnr)
     set_scrollbind(current_win, new_win)
+    peekabuf.buffer = new_win
 end
 
 function peekabuf.peekabuf(bufnr)
@@ -38,6 +41,13 @@ function peekabuf.peekabuf(bufnr)
     end
 
     peekabuf.open_buffer(bufnr)
+end
+
+function peekabuf.close()
+    if peekabuf.buffer and vim.api.nvim_win_is_valid(peekabuf.buffer) then
+        vim.api.nvim_win_close(peekabuf.buffer, false)
+        peekabuf.buffer = nil
+    end
 end
 
 return peekabuf

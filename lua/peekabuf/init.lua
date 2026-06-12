@@ -14,6 +14,12 @@ function M.setup(opts)
             ":lua require('peekabuf.viewer').peekabuf(vim.api.nvim_get_current_buf())<CR>",
             { noremap = true, silent = true, desc = "Open Markdown Viewer" }
         )
+        vim.keymap.set(
+            "n",
+            "<leader>mp",
+            ":lua require('peekabuf.viewer').close()<CR>",
+            { noremap = true, silent = true, desc = "Close Markdown Viewer" }
+        )
     end
 end
 
